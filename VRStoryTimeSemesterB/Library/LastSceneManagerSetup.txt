@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/GenderSelectionScene.unity
+- path: Assets/Scenes/Girl_Room.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
