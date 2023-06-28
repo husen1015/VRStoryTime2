@@ -18,17 +18,23 @@ public class BloomEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pp = this.GetComponent<PostProcessVolume>();
-        pp.profile.TryGetSettings(out bloom);
+        pp = null;
+        //pp.profile.TryGetSettings(out bloom);
     }
     private void Update()
     {
         //TODO: this should be called when it is night 
-        activateBloomGlow();
+        //activateBloomGlow();
         
     }
-    private void activateBloomGlow()
+    public void activateBloomGlow()
     {
+        if (pp == null)
+        {
+            pp = this.GetComponent<PostProcessVolume>();
+            pp.profile.TryGetSettings(out bloom);
+        }
+
         book.GetComponent<EndlessBook>().SetMaterial(0,glowMat);
         time += speed * Time.deltaTime;
         // calculate the desired intensity using a sine wave between the min and max intensities
@@ -45,6 +51,12 @@ public class BloomEffect : MonoBehaviour
             book.GetComponent<EndlessBook>().SetMaterial(0, glowMat);
 
         }
+    }
+    public void deactivateBloomEffect()
+    {
+        bloom.intensity.value = 1;
+        book.GetComponent<EndlessBook>().SetMaterial(0, originalMat);
+
     }
 
 }
