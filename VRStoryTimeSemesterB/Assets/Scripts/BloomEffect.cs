@@ -12,12 +12,13 @@ public class BloomEffect : MonoBehaviour
     PostProcessVolume pp;
     private Bloom bloom;
     public float startIntensity = 1f;
-    public float targetIntensity = 2f;
+    public float targetIntensity = 6f;
     private float time;
     private float speed = 3f;
     // Start is called before the first frame update
     void Start()
     {
+        book.GetComponent<EndlessBook>().SetMaterial(0, originalMat);
         pp = null;
         //pp.profile.TryGetSettings(out bloom);
     }

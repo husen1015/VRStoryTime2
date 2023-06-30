@@ -404,7 +404,6 @@
 "Assets/Azure[Sky] Dynamic Skybox/Scripts/AzureWeatherController.cs"
 "Assets/Azure[Sky] Dynamic Skybox/Scripts/AzureWeatherProfile.cs"
 "Assets/Azure[Sky] Dynamic Skybox/Scripts/AzureWeatherZone.cs"
-"Assets/Controller.cs"
 "Assets/EndlessBook/Book/Scripts/BookAnimationCompleted.cs"
 "Assets/EndlessBook/Book/Scripts/EndlessBook.cs"
 "Assets/EndlessBook/Book/Scripts/Page.cs"
@@ -425,7 +424,6 @@
 "Assets/EndlessBook/Demos/Demo 02/Scripts/RotateObject.cs"
 "Assets/EndlessBook/Demos/Demo 02/Scripts/TouchPad.cs"
 "Assets/EndlessBook/Demos/Demo 03 - Manual Page Turn/Scripts/Demo03.cs"
-"Assets/HoverAnimstatemachine.cs"
 "Assets/IL3DN/Scripts/IL3DN_ChangeWalkingSound.cs"
 "Assets/IL3DN/Scripts/IL3DN_SimpleFPSController.cs"
 "Assets/IL3DN/Scripts/IL3DN_SimpleMouseLook.cs"
@@ -434,8 +432,10 @@
 "Assets/Scripts/BookBehavior.cs"
 "Assets/Scripts/bookButton.cs"
 "Assets/Scripts/boy_button_script.cs"
+"Assets/Scripts/Controller.cs"
 "Assets/Scripts/girl_button_script.cs"
 "Assets/Scripts/home_button_script.cs"
+"Assets/Scripts/HoverAnimstatemachine.cs"
 -langversion:9.0
 
 /deterministic
