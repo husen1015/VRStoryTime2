@@ -404,6 +404,13 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.3f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.3f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/Azure[Sky] Dynamic Skybox/Editor/AzureEffectsControllerInspector.cs"
+"Assets/Azure[Sky] Dynamic Skybox/Editor/AzureEnvironmentControllerInspector.cs"
+"Assets/Azure[Sky] Dynamic Skybox/Editor/AzureOverrideObjectInspector.cs"
+"Assets/Azure[Sky] Dynamic Skybox/Editor/AzureSkyRenderControllerInspector.cs"
+"Assets/Azure[Sky] Dynamic Skybox/Editor/AzureTimeControllerInspector.cs"
+"Assets/Azure[Sky] Dynamic Skybox/Editor/AzureWeatherControllerInspector.cs"
+"Assets/Azure[Sky] Dynamic Skybox/Editor/AzureWeatherProfileInspector.cs"
 "Assets/EndlessBook/Book/Editor/BookInspector.cs"
 "Assets/IL3DN/Scripts/Editor/IL3DN_Wind_Editor.cs"
 -langversion:9.0
