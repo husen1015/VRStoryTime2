@@ -40,7 +40,7 @@ public class BloomEffect : MonoBehaviour
         time += speed * Time.deltaTime;
         // calculate the desired intensity using a sine wave between the min and max intensities
         float intensity = Mathf.Lerp(startIntensity, targetIntensity, Mathf.Sin(time));
-        //Debug.Log(intensity);
+        Debug.Log(intensity);
         bloom.intensity.value = intensity;
         if(intensity == startIntensity)
         {
