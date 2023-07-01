@@ -12,7 +12,7 @@ public class BloomEffect : MonoBehaviour
     PostProcessVolume pp;
     private Bloom bloom;
     public float startIntensity = 1f;
-    public float targetIntensity = 6f;
+    float targetIntensity = 35f;
     private float time;
     private float speed = 3f;
     // Start is called before the first frame update
