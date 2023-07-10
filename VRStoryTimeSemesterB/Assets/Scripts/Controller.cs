@@ -39,9 +39,9 @@ public class Controller : MonoBehaviour
             cameraBehavior.activateBloomGlow();
         }
         //transition time to 19:00 to set up the scene
-        else if(currTime.x < 18 || (currTime.x > 18 && currTime.y < 35)) { 
+        else if(currTime.x < 18 || (currTime.x > 18 && currTime.y < 36)) { 
             Debug.Log("time speeding");
-            timeController.StartTimelineTransition(19, 0, 5, AzureTimeDirection.Forward);
+            timeController.StartTimelineTransition(18, 30, 5, AzureTimeDirection.Forward);
 
         }
 
