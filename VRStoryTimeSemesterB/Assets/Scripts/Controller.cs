@@ -60,11 +60,19 @@ public class Controller : MonoBehaviour
             }
         }
         //transition time to 19:00 to set up the scene
-        else if(currTime.x < 18 || (currTime.x > 18 && currTime.y < 36)) { 
+        else if(currTime.x < 18 || (currTime.x > 18 && currTime.y < 5)) {
             Debug.Log("time speeding");
-            timeController.StartTimelineTransition(18, 30, 2, AzureTimeDirection.Forward);
+            timeController.StartTimelineTransition(18, 5, 20f, AzureTimeDirection.Forward);
 
         }
 
+    }
+    public void startMusic()
+    {
+        music.start();
+    }
+    public void stopMusic()
+    {
+        music.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }

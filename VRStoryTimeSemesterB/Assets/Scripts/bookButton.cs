@@ -6,11 +6,11 @@ public class bookButton : MonoBehaviour
 {
     public GameObject book;
     public Transform player;
-    float weight = 0.9f;
+    float weight;
     // Start is called before the first frame update
     void Start()
     {
-
+        weight = 0.91f;
     }
     private void Update()
     {
