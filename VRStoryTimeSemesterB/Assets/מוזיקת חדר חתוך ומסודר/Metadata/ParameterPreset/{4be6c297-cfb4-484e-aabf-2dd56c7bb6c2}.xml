@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{4be6c297-cfb4-484e-aabf-2dd56c7bb6c2}">
+		<property name="note" />
 		<property name="name">
 			<value>Parameter 3</value>
 		</property>

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,16 +12,29 @@ public class Controller : MonoBehaviour
 
     private BookBehavior bookBehavior;
     private BloomEffect cameraBehavior;
+    public GameObject runes;
+    private ParticleSystem runesParticleSystem;
     private AzureTimeController timeController;
     private bool speedUpTime;
+    private bool runesStartedPlaying;
+    FMOD.Studio.EventInstance music;
 
     private void Start()
     {
-        speedUpTime= false;
+        runesParticleSystem = runes.GetComponent<ParticleSystem>();
+        runesParticleSystem.Stop();
+        runesStartedPlaying = false;
+
+        music = RuntimeManager.CreateInstance("event:/roomMusic");
+        music.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.transform));
+        RuntimeManager.AttachInstanceToGameObject(music, transform);
+
+        speedUpTime = false;
         bookBehavior = book.GetComponent<BookBehavior>();
         cameraBehavior = cameraObj.GetComponent<BloomEffect>();
         timeController= skybox.GetComponent<AzureTimeController>();
-        cameraObj.GetComponent<BloomEffect>().activateBloomGlow();
+        //cameraObj.GetComponent<BloomEffect>().activateBloomGlow();
+        music.start();
     }
     void Update()
     {   
@@ -29,19 +43,26 @@ public class Controller : MonoBehaviour
         if (bookBehavior.shouldMove)
         {
             //cameraObj.GetComponent<BloomEffect>().deactivateBloomEffect();
-            cameraBehavior.deactivateBloomEffect();
+            //cameraBehavior.deactivateBloomEffect();
+            music.setParameterByName("Parameter 3", 1);
+            runesParticleSystem.Stop();
         }
 
         //activate it after 8 pm if player hadnt called for book
-        else if(currTime.x >= 20f || currTime.x < 4f)
+        else if(currTime.x >= 18f || currTime.x < 4f)
         {
             //Debug.Log("activating bloom");
-            cameraBehavior.activateBloomGlow();
+            //cameraBehavior.activateBloomGlow();
+            if (!runesStartedPlaying)
+            {
+                runesParticleSystem.Play();
+                runesStartedPlaying = true;
+            }
         }
         //transition time to 19:00 to set up the scene
         else if(currTime.x < 18 || (currTime.x > 18 && currTime.y < 36)) { 
             Debug.Log("time speeding");
-            timeController.StartTimelineTransition(18, 30, 5, AzureTimeDirection.Forward);
+            timeController.StartTimelineTransition(18, 30, 3, AzureTimeDirection.Forward);
 
         }
 
