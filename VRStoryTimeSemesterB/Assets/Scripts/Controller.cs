@@ -62,7 +62,7 @@ public class Controller : MonoBehaviour
         //transition time to 19:00 to set up the scene
         else if(currTime.x < 18 || (currTime.x > 18 && currTime.y < 36)) { 
             Debug.Log("time speeding");
-            timeController.StartTimelineTransition(18, 30, 3, AzureTimeDirection.Forward);
+            timeController.StartTimelineTransition(18, 30, 2, AzureTimeDirection.Forward);
 
         }
 
