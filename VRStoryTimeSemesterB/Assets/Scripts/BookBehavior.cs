@@ -7,21 +7,24 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class BookBehavior : MonoBehaviour
 {
-    public XRBaseInteractor handInteractor;
     public Transform Player;
     public bool shouldMove;
+    public GameObject book;
+
     Animator bookAnim;
-    // Start is called before the first frame update
+    private bool playedHoveringAnimation = false;
+
     private void Awake()
     {
         //make sure the book is closed at the start
-        this.GetComponent<EndlessBook>().SetState(EndlessBook.StateEnum.ClosedFront, 0f);
+        book.GetComponent<EndlessBook>().SetState(EndlessBook.StateEnum.ClosedFront, 0f);
 
     }
     void Start()
     {
-        bookAnim = GetComponent<Animator>();
-        shouldMove= false;
+        //bookAnim = GetComponent<Animator>();
+        bookAnim = book.GetComponent<Animator>();
+        shouldMove = false;
     }
 
     // Update is called once per frame
@@ -32,24 +35,25 @@ public class BookBehavior : MonoBehaviour
         //    // Call the pointing detection method
         //    OnPointingDetected();
         //}
-        if (shouldMove)
+        if (!playedHoveringAnimation)
         {
-            bookAnim.SetBool("shouldHover", true);
+            if (shouldMove)
+            {
+                bookAnim.SetBool("shouldHover", true);
 
+            }
+
+            if (bookAnim.GetBool("DoneHovering") == true)
+            {
+                playedHoveringAnimation=true;
+                //Debug.Log("done hovering");
+                book.GetComponent<EndlessBook>().SetState(EndlessBook.StateEnum.OpenMiddle, 3f);
+                bookAnim.SetBool("shouldHover", false);
+                transform.position = Player.transform.position + new Vector3(0,0,0.8f);
+                transform.Rotate( -90f, 8.055f, 0f);
+                //transform.LookAt(Player.position);
+            }
         }
-        if (bookAnim.GetBool("DoneHovering") == true)
-        {
-            //Debug.Log("done hovering");
-            this.GetComponent<EndlessBook>().SetState(EndlessBook.StateEnum.OpenMiddle, 3f);
-
-        }
-
-    }
-
-    public void OnPointingDetected()
-    {
-        // Functionality to be executed when pointing is detected
-        Debug.Log("Pointing detected!");
-        shouldMove= true;
     }
 }
+

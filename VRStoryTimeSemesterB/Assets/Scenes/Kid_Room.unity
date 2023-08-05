@@ -495,14 +495,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17999588}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75255508a45ae8242affb80059bd9255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handInteractor: {fileID: 0}
   Player: {fileID: 1621049777}
   shouldMove: 0
+  book: {fileID: 0}
 --- !u!4 &17999593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 308019442458818429, guid: 5ef2bcca2a96f38498a8dcf52868e53e, type: 3}
@@ -8448,6 +8448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 170257485}
+  - component: {fileID: 170257486}
   m_Layer: 0
   m_Name: bookWrapper
   m_TagString: Untagged
@@ -8471,6 +8472,21 @@ Transform:
   m_Father: {fileID: 1871884315}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &170257486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170257484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75255508a45ae8242affb80059bd9255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1621049777}
+  shouldMove: 0
+  book: {fileID: 17999588}
 --- !u!4 &175666670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0d92a0a7a7c3c7246bc83c48364ea2de, type: 3}
@@ -19186,9 +19202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75255508a45ae8242affb80059bd9255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handInteractor: {fileID: 0}
   Player: {fileID: 1621049777}
   shouldMove: 0
+  book: {fileID: 0}
 --- !u!4 &508590617 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 308019442458818429, guid: 5ef2bcca2a96f38498a8dcf52868e53e, type: 3}
@@ -43654,9 +43670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75255508a45ae8242affb80059bd9255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handInteractor: {fileID: 0}
   Player: {fileID: 142113484}
   shouldMove: 0
+  book: {fileID: 0}
 --- !u!111 &1746520706
 Animation:
   m_ObjectHideFlags: 0
