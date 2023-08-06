@@ -47,7 +47,7 @@ public class BookBehavior : MonoBehaviour
             {
                 playedHoveringAnimation=true;
                 //Debug.Log("done hovering");
-                book.GetComponent<EndlessBook>().SetState(EndlessBook.StateEnum.OpenMiddle, 3f);
+                book.GetComponent<EndlessBook>().SetState(EndlessBook.StateEnum.OpenFront, 3f);
                 bookAnim.SetBool("shouldHover", false);
                 transform.position = Player.transform.position + new Vector3(0,0,0.8f);
                 transform.Rotate( -90f, 8.055f, 0f);
