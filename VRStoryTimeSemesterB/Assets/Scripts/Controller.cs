@@ -21,6 +21,7 @@ public class Controller : MonoBehaviour
 
     //debug
     public bool SwitchScene = false;
+    public bool teddyStandUp = false;
 
     private void Start()
     {
@@ -62,12 +63,19 @@ public class Controller : MonoBehaviour
             timeController.StartTimelineTransition(18, 5, 20f, AzureTimeDirection.Forward);
 
         }
+
+
+        //debug purposes
+
         if (SwitchScene)
         {
             //SceneController.Instance.TransitionToScene(3);
             ScreenFader.Instance.FadeTo(3);
         }
-
+        if (teddyStandUp)
+        {
+            RoomTeddy.Instance.StandUp();
+        }
     }
 
 
