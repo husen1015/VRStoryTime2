@@ -17,24 +17,23 @@ public class Controller : MonoBehaviour
     private AzureTimeController timeController;
     private bool speedUpTime;
     private bool runesStartedPlaying;
-    FMOD.Studio.EventInstance music;
+    private AudioManager audioManager;
+
+    //debug
+    public bool SwitchScene = false;
 
     private void Start()
     {
+        audioManager = AudioManager.Instance;
         runesParticleSystem = runes.GetComponent<ParticleSystem>();
         runesParticleSystem.Stop();
         runesStartedPlaying = false;
-
-        music = RuntimeManager.CreateInstance("event:/roomMusic");
-        music.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.transform));
-        RuntimeManager.AttachInstanceToGameObject(music, transform);
 
         speedUpTime = false;
         bookBehavior = book.GetComponent<BookBehavior>();
         cameraBehavior = cameraObj.GetComponent<BloomEffect>();
         timeController= skybox.GetComponent<AzureTimeController>();
-        //cameraObj.GetComponent<BloomEffect>().activateBloomGlow();
-        music.start();
+
     }
     void Update()
     {   
@@ -42,17 +41,15 @@ public class Controller : MonoBehaviour
 
         if (bookBehavior.shouldMove)
         {
-            //cameraObj.GetComponent<BloomEffect>().deactivateBloomEffect();
-            //cameraBehavior.deactivateBloomEffect();
-            music.setParameterByName("Parameter 3", 1);
+
+            audioManager.ActivateBookSound();
             runesParticleSystem.Stop();
         }
 
         //activate it after 8 pm if player hadnt called for book
         else if(currTime.x >= 18f || currTime.x < 4f)
         {
-            //Debug.Log("activating bloom");
-            //cameraBehavior.activateBloomGlow();
+
             if (!runesStartedPlaying)
             {
                 runesParticleSystem.Play();
@@ -65,14 +62,14 @@ public class Controller : MonoBehaviour
             timeController.StartTimelineTransition(18, 5, 20f, AzureTimeDirection.Forward);
 
         }
+        if (SwitchScene)
+        {
+            //SceneController.Instance.TransitionToScene(3);
+            ScreenFader.Instance.FadeTo(3);
+        }
 
     }
-    public void startMusic()
-    {
-        music.start();
-    }
-    public void stopMusic()
-    {
-        music.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-    }
+
+
+    
 }
