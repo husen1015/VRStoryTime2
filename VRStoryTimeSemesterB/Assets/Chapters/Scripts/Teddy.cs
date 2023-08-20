@@ -45,6 +45,11 @@ public class Teddy : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(stopWalking());
                 Debug.Log("stopped walking");
+
+                //teddy should rotate toward player. not working
+
+                //transform.LookAt(Player.transform.position);
+                //transform.position = new Vector3(transform.position.x, transform.position.y - playerTeddyOffset.y, transform.position.z);
             }
         }
     }
