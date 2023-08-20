@@ -31,6 +31,7 @@ public class PopupSystem : MonoBehaviour
         animator.SetTrigger("Pop");
         PopupText.text = text;
 
+        //optional audio can be added here
     }
 
 }

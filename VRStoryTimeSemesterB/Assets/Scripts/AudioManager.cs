@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
         currentInstance= music;
 
         //removed annoying music for debug and sanity purposes
-        //currentInstance.start();
+        currentInstance.start();
 
     }
 
