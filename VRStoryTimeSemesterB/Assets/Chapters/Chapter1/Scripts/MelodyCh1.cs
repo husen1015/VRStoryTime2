@@ -16,7 +16,8 @@ public class MelodyCh1 : MonoBehaviour
     bool coroutineRunning = false;
     bool parrotAnswered = false;
     bool melodyWondered= false;
-
+    bool readyToHop = false;
+    int stage = 0;
     private string ch1_2_path = "event:/ch1_2";
     private string ch1_3_path = "event:/ch1_3";
     private string ch1_4_path = "event:/ch1_4";
@@ -69,15 +70,15 @@ public class MelodyCh1 : MonoBehaviour
         //parrot convo
         else if (currState == CurrState.withParrot)
         {
-
-            if (!startedCoroutine)
+            Debug.Log(stage);
+            if (!startedCoroutine && stage == 0)
             {
                 startedCoroutine = true;
                 StartCoroutine(waitSecondsAndPlay(9, paths[1]));
                 coroutineRunning= true;
             }
             //parrot stops making commotion
-            if(!coroutineRunning && !parrotAnswered)
+            if(!coroutineRunning && !parrotAnswered && stage==1)
             {
                 approachParrot();
                 coroutineRunning = true ;
@@ -85,12 +86,18 @@ public class MelodyCh1 : MonoBehaviour
                 Parrot.stopMakingCommotion();
                 parrotAnswered = true;
             }
-            //echo hops from house to house
-            else if (!coroutineRunning && !melodyWondered )
+            //melody asks parrot
+            else if (!coroutineRunning && !melodyWondered && stage == 2)
             {
                 melodyWondered= true;
-                Parrot.HopHouseToHouse();
+                coroutineRunning= true;
                 StartCoroutine(waitSecondsAndPlay(7, paths[3]));
+            }
+            //echo hops from house to house
+            else if(!coroutineRunning && !readyToHop && stage ==3)
+            {
+                Parrot.HopHouseToHouse();
+
             }
 
         }
@@ -106,6 +113,7 @@ public class MelodyCh1 : MonoBehaviour
         storyCanvas.ChangeText();
 
         coroutineRunning = false;
+        stage++;
     }
     private void approachParrot()
     {

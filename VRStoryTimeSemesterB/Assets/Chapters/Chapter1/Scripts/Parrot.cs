@@ -22,6 +22,6 @@ public class Parrot : MonoBehaviour
     }
     public static void HopHouseToHouse()
     {
-
+        animator.SetBool("shouldHop", true);
     }
 }
