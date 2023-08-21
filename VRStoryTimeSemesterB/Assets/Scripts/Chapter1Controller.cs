@@ -10,9 +10,10 @@ public class Chapter1Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(AudioManager.Instance!= null)
-            AudioManager.Instance.PlayFirstLevelMusic();
+        //if(AudioManager.Instance!= null)
+        //    AudioManager.Instance.PlayFirstLevelMusic();
 
+        
     }
 
     // Update is called once per frame
@@ -20,4 +21,6 @@ public class Chapter1Controller : MonoBehaviour
     {
         
     }
+
+
 }

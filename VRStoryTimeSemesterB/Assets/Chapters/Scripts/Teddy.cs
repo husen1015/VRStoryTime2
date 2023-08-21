@@ -9,23 +9,27 @@ public class Teddy : MonoBehaviour
     private NavMeshAgent agent;
     private float walkingVal;
     private Animator animator;
-    private Vector3 playerTeddyOffset = Vector3.zero;
     private bool walkingStarted = false;
     private bool stoppingStarted = true;
+    private StoryCanvas storyCanvas;
 
+    private string ch1_1_path = "event:/ch1_1";
     // Start is called before the first frame update
     void Start()
     {
-        agent= GetComponent<NavMeshAgent>();
+        storyCanvas = StoryCanvas.Instance;
+
+        agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        playerTeddyOffset.z = Player.transform.position.z - transform.position.z;
+        Ch1AudioManager.Instance.PlayOneTimeSound(ch1_1_path);
+        storyCanvas.ChangeText(0);
     }
 
     // Update is called once per frame
     void Update()
     {
         float dist = Vector3.Distance(transform.position, Player.transform.position);
-        if(dist > 3.5f)
+        if(dist > 4.5f)
         {
             if (!walkingStarted)
             {

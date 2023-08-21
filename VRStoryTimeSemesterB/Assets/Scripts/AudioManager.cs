@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); //keep the instance when transitioning to a new scene
+            //DontDestroyOnLoad(gameObject); //keep the instance when transitioning to a new scene
         }
         else
         {
@@ -39,11 +39,6 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void ActivateBookSound()
     {
         music.setParameterByName("Parameter 3", 1);
@@ -51,6 +46,10 @@ public class AudioManager : MonoBehaviour
     public void PlayFirstLevelMusic()
     {
         currentInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+    }
+    public void FirstChapter()
+    {
 
     }
 }

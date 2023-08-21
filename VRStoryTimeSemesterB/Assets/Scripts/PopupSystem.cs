@@ -8,6 +8,8 @@ public class PopupSystem : MonoBehaviour
 {
     public static PopupSystem Instance { get; private set; }
     public GameObject PopupCanvas;
+    public GameObject StoryCanvas;
+
     public TMP_Text PopupText;
     private Animator animator;
     private void Awake()
@@ -33,5 +35,8 @@ public class PopupSystem : MonoBehaviour
 
         //optional audio can be added here
     }
+    public void AdvanceStory()
+    {
 
+    }
 }
