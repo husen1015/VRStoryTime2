@@ -8842,7 +8842,7 @@ GameObject:
   - component: {fileID: 229641453}
   - component: {fileID: 229641452}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19393,6 +19393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  popupSystem: {fileID: 632904855}
 --- !u!4 &604853271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 490122, guid: d33cc532d4f035241bb5f2becba47604, type: 3}
@@ -19721,6 +19722,7 @@ GameObject:
   - component: {fileID: 632904853}
   - component: {fileID: 632904852}
   - component: {fileID: 632904851}
+  - component: {fileID: 632904855}
   m_Layer: 5
   m_Name: PopupCanvas
   m_TagString: Untagged
@@ -19831,6 +19833,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &632904855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632904849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66059cb023ab5549bce51e7b3757184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopupText: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &635852172
 GameObject:
   m_ObjectHideFlags: 0
@@ -25022,9 +25038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66059cb023ab5549bce51e7b3757184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PopupCanvas: {fileID: 632904849}
-  StoryCanvas: {fileID: 0}
-  PopupText: {fileID: 229641452}
+  PopupText: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!4 &1046221384
 Transform:
   m_ObjectHideFlags: 0

@@ -6,37 +6,37 @@ using UnityEngine;
 
 public class PopupSystem : MonoBehaviour
 {
-    public static PopupSystem Instance { get; private set; }
-    public GameObject PopupCanvas;
-    public GameObject StoryCanvas;
+    //public static PopupSystem Instance { get; private set; }
+    //public GameObject PopupCanvas;
 
-    public TMP_Text PopupText;
+    private TMP_Text PopupText;
     private Animator animator;
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
     private void Start()
     {
-        animator = PopupCanvas.GetNamedChild("Popup").GetComponent<Animator>();
+        animator = gameObject.GetNamedChild("Popup").GetComponent<Animator>();
+        PopupText = gameObject.GetNamedChild("Popup").GetNamedChild("Text").GetComponent<TextMeshProUGUI>();
     }
     public void ShowPopUp(string text)
     {
-        PopupCanvas.SetActive(true);
+        //PopupCanvas.SetActive(true);
+        //animator.SetTrigger("Pop");
+        //PopupText.text = text;
+
+        gameObject.SetActive(true);
         animator.SetTrigger("Pop");
         PopupText.text = text;
-
         //optional audio can be added here
     }
-    public void AdvanceStory()
-    {
 
-    }
 }

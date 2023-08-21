@@ -7,6 +7,7 @@ public class RoomTeddy : MonoBehaviour
     public Animator animator;
     private string bookHint1 = "dont you think that book over by the window looks suspicios?";
     public static RoomTeddy Instance { get; private set; }
+    public PopupSystem popupSystem;
     private void Awake()
     {
         if (Instance == null)
@@ -27,6 +28,6 @@ public class RoomTeddy : MonoBehaviour
     {
 
         animator.SetTrigger("StandUp");
-        PopupSystem.Instance.ShowPopUp(bookHint1);
+        popupSystem.ShowPopUp(bookHint1);
     }
 }

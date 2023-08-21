@@ -12,6 +12,7 @@ public class Teddy : MonoBehaviour
     private bool walkingStarted = false;
     private bool stoppingStarted = true;
     private StoryCanvas storyCanvas;
+    public bool ShouldWave;
 
     private string ch1_1_path = "event:/ch1_1";
     // Start is called before the first frame update
@@ -28,6 +29,15 @@ public class Teddy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //functionality for waving at player. should add logic with hands here
+        if(ShouldWave)
+        {
+            ShouldWave= false;
+            animator.SetBool("shouldWave", true);
+            StartCoroutine(waveFor1Second());
+        }
+
+        //follow player 
         float dist = Vector3.Distance(transform.position, Player.transform.position);
         if(dist > 4.5f)
         {
@@ -56,6 +66,11 @@ public class Teddy : MonoBehaviour
                 //transform.position = new Vector3(transform.position.x, transform.position.y - playerTeddyOffset.y, transform.position.z);
             }
         }
+    }
+    private IEnumerator waveFor1Second()
+    {
+        yield return new WaitForSeconds(1);
+        animator.SetBool("shouldWave", false);
     }
     private IEnumerator startWalking()
     {
