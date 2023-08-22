@@ -6,33 +6,19 @@ using UnityEngine;
 
 public class PopupSystem : MonoBehaviour
 {
-    //public static PopupSystem Instance { get; private set; }
-    //public GameObject PopupCanvas;
 
-    private TMP_Text PopupText;
-    private Animator animator;
-    //private void Awake()
-    //{
-    //    if (Instance == null)
-    //    {
-    //        Instance = this;
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    public TMP_Text PopupText;
+    public Animator animator;
+
     private void Start()
     {
-        animator = gameObject.GetNamedChild("Popup").GetComponent<Animator>();
-        PopupText = gameObject.GetNamedChild("Popup").GetNamedChild("Text").GetComponent<TextMeshProUGUI>();
+        //animator = gameObject.GetNamedChild("Popup").GetComponent<Animator>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
+        PopupText = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        //PopupText = gameObject.GetNamedChild("Popup").GetNamedChild("Text").GetComponent<TextMeshProUGUI>();
     }
     public void ShowPopUp(string text)
     {
-        //PopupCanvas.SetActive(true);
-        //animator.SetTrigger("Pop");
-        //PopupText.text = text;
-
         gameObject.SetActive(true);
         animator.SetTrigger("Pop");
         PopupText.text = text;
