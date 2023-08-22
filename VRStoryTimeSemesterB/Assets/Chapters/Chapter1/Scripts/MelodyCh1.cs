@@ -12,6 +12,7 @@ public class MelodyCh1 : MonoBehaviour
     public GameObject waypoints;
     public Transform[] waypointsArr;
     private StoryCanvas storyCanvas;
+    public bool shouldWait = true;
     bool startedCoroutine = false;
     bool coroutineRunning = false;
     bool parrotAnswered = false;
@@ -25,13 +26,29 @@ public class MelodyCh1 : MonoBehaviour
 
     List<string> paths;
 
+    public static MelodyCh1 Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
+    }
     enum CurrState
     {
+        waitingForPlayer,
         goingToMarket,
         withParrot
         
     }
-    CurrState currState = CurrState.goingToMarket;
+    CurrState currState = CurrState.waitingForPlayer;
 
     void Start()
     {
@@ -51,20 +68,33 @@ public class MelodyCh1 : MonoBehaviour
 
     void Update()
     {
-        //going to market
-        if (currState == CurrState.goingToMarket)
+        //waiting by mill
+        if(currState== CurrState.waitingForPlayer)
         {
-            if (Vector3.Distance(transform.position, waypointsArr[0].position) > 0.4f)
+            agent.SetDestination(waypointsArr[0].position);
+            if(Vector3.Distance(transform.position, waypointsArr[0].position) < 0.4f)
+            {
+                animator.SetBool("Walk", false);
+            }
+            if (!shouldWait)
+            {
+                currState = CurrState.goingToMarket;
+                animator.SetBool("Walk", true);
+                audioManager.PlayOneTimeSound(ch1_2_path);
+                storyCanvas.ChangeText();
+            }
+        }
+        //going to market
+        else if (currState == CurrState.goingToMarket)
+        {
+            if (Vector3.Distance(transform.position, waypointsArr[1].position) > 0.4f)
             {
                 GoToMarket();
             }
             else
             {
-                audioManager.PlayOneTimeSound(ch1_2_path);
                 currState = CurrState.withParrot;
                 animator.SetBool("Walk", false);
-                storyCanvas.ChangeText();
-
             }
         }
         //parrot convo
@@ -74,7 +104,7 @@ public class MelodyCh1 : MonoBehaviour
             if (!startedCoroutine && stage == 0)
             {
                 startedCoroutine = true;
-                StartCoroutine(waitSecondsAndPlay(9, paths[1]));
+                StartCoroutine(waitSecondsAndPlay(2, paths[1]));
                 coroutineRunning= true;
             }
             //parrot stops making commotion
@@ -104,7 +134,7 @@ public class MelodyCh1 : MonoBehaviour
     }
     public void GoToMarket()
     {
-        agent.SetDestination(waypointsArr[0].position);
+        agent.SetDestination(waypointsArr[1].position);
     }
     IEnumerator waitSecondsAndPlay(int seconds, string path)
     {
@@ -118,7 +148,7 @@ public class MelodyCh1 : MonoBehaviour
     private void approachParrot()
     {
         Debug.Log("approach parrot");
-        agent.SetDestination(waypointsArr[1].position);
+        agent.SetDestination(waypointsArr[2].position);
         //Ch1AudioManager.Instance.PlayOneTimeSound(paths[2]);
     }
 }
